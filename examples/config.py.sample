@@ -1,0 +1,5 @@
+# coding=utf-8
+
+API_KEY = "YOUR_API_KEY"
+
+COLLABORATOR_EMAIL = ""     #  ایمیل کاربر همکار
