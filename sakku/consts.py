@@ -83,3 +83,22 @@ class ScalingMode:
     MEM = "MEM"
     AND = "AND"
     OR = "OR"
+
+
+class FeedbackType:
+    def __init__(self):
+        pass
+
+    IMPROVEMENT = "IMPOROVEMENT"
+    NEW_FUTURE = "NEW_FUTURE"
+    PROBLEM = "PROBLEM",
+    OTHER = "OTHER"
+
+
+class MetaDataScope:
+    def __init__(self):
+        pass
+
+    APP = "APP"
+    ENV = "ENV"
+    CONFIG = "CONFIG"
