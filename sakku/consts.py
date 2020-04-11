@@ -83,3 +83,21 @@ class ScalingMode:
     MEM = "MEM"
     AND = "AND"
     OR = "OR"
+
+
+class RecordType:
+    def __index__(self):
+        pass
+
+    SOA = "SOA"
+    A = "A"
+    AAAA = "AAAA"
+    CAA = "CAA"
+    CNAME = "CNAME"
+    MX = "MX"
+    PTR = "PTR"
+    SPF = "SPF"
+    SRV = "SRV"
+    TXT = "TXT"
+    LOC = "LOC"
+    NS = "NS"
