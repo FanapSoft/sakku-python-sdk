@@ -23,7 +23,7 @@ class Catalog(Sakku):
 
         :param int catalog_id: شناسه دسته بندی کاتالوگ
         :param dict catalog_app_config: تنظیمات کاتالوگی که ایجاد خواهد شد
-        :return: list
+        :return: dict
         """
         self._validate({"catalog_id": catalog_id, "catalog_app_config": catalog_app_config}, "createCatalogApp")
 
@@ -36,7 +36,7 @@ class Catalog(Sakku):
 
         :param int catalog_app_id:
         :param dict catalog_app_config: تنظیمات
-        :return: list
+        :return: dict
         """
 
         self._validate({"catalog_app_id": catalog_app_id, "catalog_app_config": catalog_app_config}, "updateCatalog")
@@ -50,7 +50,7 @@ class Catalog(Sakku):
 
         :param int catalog_id: شناسه کاتالوگ
         :param int catalog_app_id: شناسه دسته کاتالوگ
-        :return: list
+        :return: dict
         """
 
         self._validate({"catalog_id": catalog_id, "catalog_app_id": catalog_app_id}, "getCatalogApp")
@@ -134,7 +134,7 @@ class Catalog(Sakku):
 
     def deploy_app_from_catalog(self, catalog_app_id, settings, files=None, **kwargs):
         """
-        مشاهده کاتالوگ یک دسته با شناسه
+        ایجاد برنامه از طریق کاتالوگ
 
         :param int catalog_app_id: شناسه کاتالوگ
         :param dict settings: اطلاعات برنامه
