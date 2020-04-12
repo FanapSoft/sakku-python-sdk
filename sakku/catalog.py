@@ -107,7 +107,7 @@ class Catalog(Sakku):
         self._validate(data, "addUserFeedbackCatalogs")
         data["type"] = feedback_type
         del data["feedback_type"]
-        print(data)
+
         return self._request.call("/catalog/feedback", json=data, method="post")
 
     def get_all_meta_data(self, page=1, size=50, **kwargs):
@@ -141,17 +141,8 @@ class Catalog(Sakku):
         :param list files: اطلاعات برنامه
         :return: list
         """
-        data = kwargs.copy()
-        data["catalog_app_id"] = catalog_app_id
-        data["settings"] = settings
-
-        if files is not None:
-            data["files"] = files
-
-        self._validate(data, "deployAppFromCatalog")
-        del data["catalog_app_id"]
-
-        return self._request.call("/catalog/deploy/{}/test".format(catalog_app_id), params=data, method="post")
+        return self.__deploy_app_from_catalog(catalog_app_id=catalog_app_id, settings=settings, files=files, test=False,
+                                              **kwargs)
 
     def deploy_app_from_catalog_test(self, catalog_app_id, settings, files=None, **kwargs):
         """
@@ -162,14 +153,33 @@ class Catalog(Sakku):
         :param list files: اطلاعات برنامه
         :return: list
         """
-        data = {
-            "catalog_app_id": catalog_app_id,
-            "settings": settings
-        }
+        return self.__deploy_app_from_catalog(catalog_app_id=catalog_app_id, settings=settings, files=files, test=True,
+                                              **kwargs)
+
+    def __deploy_app_from_catalog(self, catalog_app_id, settings, files=None, test=False, **kwargs):
+        """
+        ایجاد برنامه از طریق کاتالوگ
+
+        :param int catalog_app_id: شناسه کاتالوگ
+        :param dict settings: اطلاعات برنامه
+        :param list files: اطلاعات برنامه
+        :param bool test: سرویس تستی اجرا شود؟
+        :return: list
+        """
+        data = kwargs.copy()
+        data["catalog_app_id"] = catalog_app_id
+        data["settings"] = settings
 
         if files is not None:
             data["files"] = files
 
-        self._validate(kwargs, "deployAppFromCatalog")
-        return self._request.call("/catalog/deploy/{}/test".format(catalog_app_id), params=kwargs, method="post")
+        self._validate(data, "deployAppFromCatalog")
+        del data["catalog_app_id"]
+
+        if test:
+            url = "/test"
+        else:
+            url = ""
+
+        return self._request.call("/catalog/deploy/{}{}".format(catalog_app_id, url), params=data, method="post")
 
