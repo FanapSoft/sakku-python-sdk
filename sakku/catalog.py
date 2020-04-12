@@ -67,14 +67,12 @@ class Catalog(Sakku):
         :param int app_id: شناسه برنامه
         :param int catalog_id: شناسه دسته بندی کاتالوگ
         :param dict catalog_app_config: تنظیمات کاتالوگی که ایجاد خواهد شد
-        :return: list
+        :return: dict
         """
         self._validate({"app_id": app_id, "catalog_id": catalog_id, "catalog_app_config": catalog_app_config},
                        "createCatalogAppBySakkuApp")
-        return self._request.call("/catalog/{}/create/fromApplication".format(catalog_id),
-                                  json=catalog_app_config, params={
-                "appId": app_id
-            }, method="post")
+        return self._request.call("/catalog/{}/create/fromApplication?appId={}".format(catalog_id, app_id),
+                                  json=catalog_app_config, method="post")
 
     def get_all_catalog_app_by_id(self, catalog_id, **kwargs):
         """
