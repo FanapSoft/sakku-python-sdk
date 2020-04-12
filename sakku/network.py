@@ -35,12 +35,7 @@ class Network(Sakku):
         :param str name: نام شبکه
         :return: bool
         """
-        data = {
-            "appId": app_id,
-            "name": name
-        }
-
-        self._validate(data, "addAppToNetwork")
+        self._validate({"app_id": app_id, "name": name}, "addAppToNetwork")
         result = self._request.call("/app/network/{}/addApp?appId={}".format(name, app_id), params=kwargs,
                                     method="post")
 
