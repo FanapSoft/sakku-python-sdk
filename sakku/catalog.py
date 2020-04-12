@@ -1,10 +1,6 @@
 # coding=utf-8
 from __future__ import unicode_literals
-
-import json
-
 from .sakku import Sakku
-from .exceptions import InvalidDataException
 
 
 class Catalog(Sakku):
