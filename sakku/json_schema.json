@@ -1716,5 +1716,62 @@
     "required": [
       "domain", "name", "record_type"
     ]
+  },
+  "createNetwork": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "required": [
+      "name"
+    ]
+  },
+  "addAppToNetwork": {
+    "type": "object",
+    "properties": {
+      "app_id": {
+        "type": "integer"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "required": [
+      "app_id", "name"
+    ]
+  },
+  "removeAppFromNetwork": {
+    "type": "object",
+    "properties": {
+      "app_id": {
+        "type": "integer"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "required": [
+      "app_id", "name"
+    ]
+  },
+  "deleteNetworkByUser": {
+    "type": "object",
+    "properties": {
+      "force": {
+        "type": "boolean"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "required": [
+      "name"
+    ]
   }
 }
