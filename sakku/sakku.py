@@ -51,6 +51,7 @@ class Sakku(object):
         try:
             validate(instance=document, schema=self.__json_schema_rules.get_rules(schema_name))
         except ValidationError as e:
-            raise InvalidDataException(message="{}: {}".format(".".join(e.path), e.message), error_code=887)
+            raise InvalidDataException(message="{}: {}".format(".".join([str(elm) for elm in e.path]), e.message),
+                                       error_code=887)
         except SchemaError as e:
             raise InvalidDataException(message=e.message, error_code=887)
