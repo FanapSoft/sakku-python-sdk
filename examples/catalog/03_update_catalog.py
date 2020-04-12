@@ -28,20 +28,73 @@ try:
                     "basicAuthentication": False,
                     "forceRedirectHttps": False
                 }]
-            },
-            "metadata": [
-                {
-                    "advanced": False,
-                    "scope": "APP"
-                }
-            ]
+            }
         }]
     }
 
     response = app.update_catalog(catalog_app_id=90, catalog_app_config=catalog_config)
     print(response)
     # OUTPUT
-    #
+    # {
+    #   "id": 90,
+    #   "name": "کاتالوگ تست - ویرایش شده",
+    #   "description": "این کاتالوگ با پایتون ایجاد شده.",
+    #   "avatar": "",
+    #   "price": 0,
+    #   "deployCount": 0,
+    #   "deployLimitCount": 100,
+    #   "created": "2020-04-05T10:24:23.563+0000",
+    #   "updated": "2020-04-12T06:21:38.474+0000",
+    #   "catalogConfigs": [
+    #     {
+    #       "appName": None,
+    #       "minCpu": 0.0,
+    #       "minMem": 0.0,
+    #       "minDisk": 0.0,
+    #       "config": {
+    #         "name": "test_c_edi_78",
+    #         "cpu": 0.2,
+    #         "mem": 0.1,
+    #         "disk": 0.2,
+    #         "ports": [
+    #           {
+    #             "host": 0,
+    #             "port": 80,
+    #             "protocol": "http",
+    #             "ssl": False,
+    #             "onlyInternal": False,
+    #             "basicAuthentication": False,
+    #             "forceRedirectHttps": False
+    #           }
+    #         ],
+    #         "minInstance": 1,
+    #         "maxInstance": 1,
+    #         "cmd": "",
+    #         "entrypoint": None,
+    #         "scalingMode": None,
+    #         "args": None,
+    #         "modules": None,
+    #         "environments": {},
+    #         "labels": {},
+    #         "links": [],
+    #         "netAliases": None,
+    #         "healthChecks": [],
+    #         "basicAuthentications": [],
+    #         "portOptions": [],
+    #         "image": None,
+    #         "git": None,
+    #         "app": None,
+    #         "deployType": None,
+    #         "worker": None,
+    #         "network": None,
+    #         "dependsOn": None,
+    #         "pipeLineStatus": "WAITING"
+    #       },
+    #       "dockerFileText": None,
+    #       "metadata": []
+    #     }
+    #   ]
+    # }
 
     # print(app.last_response().original_result())    # get raw result
     # print(app.last_response())  # get response handler
