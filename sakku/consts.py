@@ -102,3 +102,21 @@ class MetaDataScope:
     APP = "APP"
     ENV = "ENV"
     CONFIG = "CONFIG"
+
+
+class RecordType:
+    def __index__(self):
+        pass
+
+    SOA = "SOA"
+    A = "A"
+    AAAA = "AAAA"
+    CAA = "CAA"
+    CNAME = "CNAME"
+    MX = "MX"
+    PTR = "PTR"
+    SPF = "SPF"
+    SRV = "SRV"
+    TXT = "TXT"
+    LOC = "LOC"
+    NS = "NS"
