@@ -54,6 +54,7 @@ class Domain(Sakku):
         :return: list
         """
         data = {
+            "app_id": app_id,
             "domain": domain
         }
 
@@ -61,6 +62,7 @@ class Domain(Sakku):
             data["certid"] = cert_id
 
         self._validate(data, "addDomain")
+        del data["app_id"]
 
         return self._request.call("/domain/app/{}/addDomain?{}".format(app_id, urlencode(data)), params=kwargs,
                                   method="post")
@@ -84,12 +86,8 @@ class Domain(Sakku):
         :param list of dict basic_authentication: لیست احراز هویت ها
         :return: list
         """
-        data = {
-            "basicAuthentication": basic_authentication
-        }
-
-        self._validate(data, "addBasicAuthUsers")
-        return self._request.call("/domain/app/{}/basicAuthentication".format(app_id), json=data["basicAuthentication"],
+        self._validate({"app_id": app_id, "basic_authentication": basic_authentication}, "addBasicAuthUsers")
+        return self._request.call("/domain/app/{}/basicAuthentication".format(app_id), json=basic_authentication,
                                   params=kwargs,
                                   method="post")
 
@@ -102,7 +100,7 @@ class Domain(Sakku):
         :return: list
         """
 
-        self._validate(kwargs, "deleteBasicAuthUsers")
+        self._validate({"app_id": app_id, "basic_auth_id": basic_auth_id}, "deleteBasicAuthUsers")
         return self._request.call("/domain/app/{}/basicAuthentication/{}".format(app_id, basic_auth_id), params=kwargs,
                                   method="delete")
 
@@ -136,12 +134,8 @@ class Domain(Sakku):
         :param dict record_config: تنظیمات رکورد
         :return: bool
         """
-        data = {
-            "domain": domain,
-            "record_config": record_config
-        }
 
-        self._validate(data, "addDomainRecord")
+        self._validate({"domain": domain, "record_config": record_config}, "addDomainRecord")
         return self._request.call("/domain/record?domain={}".format(domain), json=record_config, params=kwargs,
                                   method="post")
 

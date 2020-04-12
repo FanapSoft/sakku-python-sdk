@@ -1178,5 +1178,232 @@
       "deploy_queue_id"
     ],
     "additionalProperties": false
+  },
+  "addDomain": {
+    "type": "object",
+    "properties": {
+      "app_id": {
+        "type": "integer"
+      },
+      "domain": {
+        "type": "string",
+        "minLength": 1
+      },
+      "certid": {
+        "type": "integer"
+      }
+    },
+    "required": [
+      "app_id", "domain"
+    ]
+  },
+  "getAppDomains": {
+    "type": "object",
+    "properties": {
+      "app_id": {
+        "type": "integer"
+      }
+    },
+    "required": [
+      "app_id"
+    ]
+  },
+  "removeDomain": {
+    "type": "object",
+    "properties": {
+      "app_id": {
+        "type": "integer"
+      },
+      "domain": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "required": [
+      "app_id", "domain"
+    ]
+  },
+  "addBasicAuthUsers": {
+    "type": "object",
+    "properties": {
+      "app_id": {
+        "type": "integer"
+      },
+      "basic_authentication": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "username": {
+              "type": "string",
+              "minLength": 1
+            },
+            "password": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": ["username", "password"]
+        }
+      }
+    },
+    "required": [
+      "app_id", "basic_authentication"
+    ]
+  },
+  "getBasicAuthUsers": {
+    "type": "object",
+    "properties": {
+      "app_id": {
+        "type": "integer"
+      }
+    },
+    "required": [
+      "app_id"
+    ]
+  },
+  "deleteBasicAuthUsers": {
+    "type": "object",
+    "properties": {
+      "app_id": {
+        "type": "integer"
+      },
+      "basic_auth_id": {
+        "type": "integer"
+      }
+    },
+    "required": [
+      "app_id", "basic_auth_id"
+    ]
+  },
+  "getDomainRecords": {
+    "type": "object",
+    "properties": {
+      "domain": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "required": [
+      "domain"
+    ]
+  },
+  "addDomainRecord": {
+    "type": "object",
+    "properties": {
+      "domain": {
+        "type": "string",
+        "minLength": 1
+      },
+      "record_config": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ttl": {
+            "type": "integer"
+          },
+          "type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "disabled": {
+                  "type": "boolean"
+                }
+              },
+              "required": ["content"]
+            }
+          }
+        },
+        "required": ["name", "ttl", "type", "records"]
+      }
+    },
+    "required": [
+      "domain", "record_config"
+    ]
+  },
+  "updateDomainRecord": {
+    "type": "object",
+    "properties": {
+      "domain": {
+        "type": "string",
+        "minLength": 1
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "record_type": {
+        "type": "string",
+        "minLength": 1
+      },
+      "record_config": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ttl": {
+            "type": "integer"
+          },
+          "type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "disabled": {
+                  "type": "boolean"
+                }
+              },
+              "required": ["content"]
+            }
+          }
+        },
+        "required": ["name", "ttl", "type", "records"]
+      }
+    },
+    "required": [
+      "domain", "name", "record_config", "record_type"
+    ]
+  },
+  "deleteDomainRecord": {
+    "type": "object",
+    "properties": {
+      "domain": {
+        "type": "string",
+        "minLength": 1
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "record_type": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "required": [
+      "domain", "name", "record_type"
+    ]
   }
 }
