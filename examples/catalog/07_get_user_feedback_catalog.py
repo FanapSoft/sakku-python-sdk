@@ -12,7 +12,36 @@ try:
     response = app.get_user_feedback_catalog()
     print(response)
     # OUTPUT
-    # []
+    # [
+    #   {
+    #     "id": 8,
+    #     "created": "2020-04-07T13:17:47.033+0000",
+    #     "catalogApp": None,
+    #     "subject": "تست ارسال فیدبک از پایتون",
+    #     "description": "این فیدبک رو همینجوری فرستادم",
+    #     "dockerName": "",
+    #     "price": 20000,
+    #     "type": "IMPOROVEMENT",
+    #     "minCpu": 0.5,
+    #     "minMem": 1.5,
+    #     "minDisk": 1.0,
+    #     "checked": False
+    #   },
+    #   {
+    #     "id": 7,
+    #     "created": "2020-04-07T13:17:11.403+0000",
+    #     "catalogApp": None,
+    #     "subject": "تست ارسال فیدبک از پایتون",
+    #     "description": "این فیدبک رو همینجوری فرستادم",
+    #     "dockerName": "",
+    #     "price": 20000,
+    #     "type": "OTHER",
+    #     "minCpu": 0.5,
+    #     "minMem": 1.5,
+    #     "minDisk": 1.0,
+    #     "checked": False
+    #   }
+    # ]
 
     # print(app.last_response().original_result())    # get raw result
     # print(app.last_response())  # get response handler
