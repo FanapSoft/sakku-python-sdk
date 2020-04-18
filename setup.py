@@ -24,7 +24,8 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     keywords=["cloud", "sdk"],
-    packages=find_packages(exclude=("tests", "examples")),
+    packages=find_packages(exclude=("tests", "examples", "examples.application", "examples.catalog", "examples.domain",
+                                    "examples.network")),
     install_requires=requires,
     zip_safe=False,
     classifiers=[
@@ -43,7 +44,7 @@ setup(
         "sakku": ["*.ini", "*.json"]
     },
     project_urls={
-        "Documentation": "http://docs.pod.ir/v1.0.0.2/PODSDKs/python/5740/banking",
+        "Documentation": "http://docs.pod.ir/v1.0.0.2/PODSDKs/python/6220/sakku",
         "Source": "https://github.com/FanapSoft/sakku-python-sdk",
         "Tracker": "https://github.com/FanapSoft/sakku-python-sdk/issues"
     }
